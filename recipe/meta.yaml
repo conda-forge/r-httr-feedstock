@@ -1,4 +1,4 @@
-{% set version = "1.3.1" %}
+{% set version = '1.3.1' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -10,19 +10,23 @@ package:
 source:
   fn: httr_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/httr_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/httr/httr_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/httr_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/httr/httr_{{ version }}.tar.gz
   sha256: 22134d7426b2eba37f0cc34b99285499b8bac9fe75a7bc3222fbad179bf8f258
 
 build:
-  number: 0
-  skip: true  # [win32]
+  merge_build_host: True  # [win]
+  number: 1
+
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
+    - {{posix}}zip               # [win]
+
+  host:
     - r-base
     - r-r6
     - r-curl >=0.9.1
@@ -40,18 +44,24 @@ requirements:
 
 test:
   commands:
-    - $R -e "library('httr')"  # [not win]
+    - $R -e "library('httr')"           # [not win]
     - "\"%R%\" -e \"library('httr')\""  # [win]
 
 about:
-  home: https://github.com/hadley/httr
+  home: https://github.com/r-lib/httr
   license: MIT
   summary: Useful tools for working with HTTP organised by HTTP verbs (GET(), POST(), etc). Configuration
     functions make it easy to control additional request components (authenticate(),
     add_headers() and so on).
   license_family: MIT
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/MIT'  # [unix]
+  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\MIT'  # [win]
 
 extra:
   recipe-maintainers:
     - johanneskoester
     - bgruening
+    - daler
+    - jdblischak
+    - cbrueffer
+    - dbast
