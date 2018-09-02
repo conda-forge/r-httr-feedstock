@@ -1,7 +1,7 @@
 About r-httr
 ============
 
-Home: https://github.com/hadley/httr
+Home: https://github.com/r-lib/httr
 
 Package license: MIT
 
