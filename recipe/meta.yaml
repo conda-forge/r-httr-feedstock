@@ -8,17 +8,15 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: httr_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/httr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/httr/httr_{{ version }}.tar.gz
   sha256: 462bed6ed0d92f811d5df4d294336025f1dbff357286999d9269bfd9c20b1ef9
 
 build:
-  noarch: generic
   merge_build_host: true  # [win]
   number: 0
-
+  noarch: generic
   rpaths:
     - lib/R/lib/
     - lib/
@@ -59,9 +57,3 @@ about:
 extra:
   recipe-maintainers:
     - conda-forge/r
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
-    - dbast
