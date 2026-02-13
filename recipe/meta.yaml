@@ -1,4 +1,4 @@
-{% set version = "1.4.7" %}
+{% set version = "1.4.8" %}
 
 {% set posix = 'm2-' if win else '' %}
 
@@ -10,10 +10,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/httr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/httr/httr_{{ version }}.tar.gz
-  sha256: 1555e6c2fb67bd38ff11b479f74aa287b2d93f4add487aec53b836ff07de3a3a
+  sha256: 62acf6759814f0a2923d18904971e16e01d6147419ceb816dac02113fc3e09f8
 
 build:
-  number: 2
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
