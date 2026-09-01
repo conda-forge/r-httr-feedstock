@@ -1,4 +1,4 @@
-{% set version = "1.4.8" %}
+{% set version = "1.4.9" %}
 
 {% set posix = 'm2-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/httr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/httr/httr_{{ version }}.tar.gz
-  sha256: 62acf6759814f0a2923d18904971e16e01d6147419ceb816dac02113fc3e09f8
+  sha256: 4adf8cea7a24012ec883da1723eaade26c69455e0a3200bdc12f2f9f8515982c
 
 build:
   number: 0
